@@ -1,1 +1,37 @@
-<p>room works!</p>
+<!-- We cannot put these in if because when we call joinroom we select these video elements -->
+<div [ngClass]="{ hidden: status !== 2 }">
+  <div class="p-[20px]">
+    <h3>You</h3>
+    <video #localVideo [muted]="true" [autoplay]="true"></video>
+  </div>
+
+  <div class="p-[20px]">
+    <h3>Remote</h3>
+    <video #remoteVideo [autoplay]="true"></video>
+  </div>
+</div>
+
+<!-- Show elements based on status -->
+@if(status === 0) {
+<div class="p-[20px]">
+  Looking for a match.. Please wait...
+  <button class="border-2" (click)="joinRoom()">Join</button>
+</div>
+}@else if (status === 1){
+<div class="p-[20px]">
+  Connecting to remote host...
+  <br />Please wait....
+</div>
+}@else if (status === 2){
+<button class="border-2" (click)="leaveRoom()">Leave Meeting</button>
+}@else if(status === 3){
+<div class="p-[20px]">
+  Remote user has disconnected! Search for a new match?
+  <button class="border-2">Start a new search</button>
+</div>
+}
+
+<!-- Display error messages to user for example camera permission is denied -->
+@if(errorMessages){
+<div class="text-red-700">{{ errorMessages }}</div>
+}
