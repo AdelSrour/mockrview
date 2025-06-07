@@ -13,10 +13,7 @@
 
 <!-- Show elements based on status -->
 @if(status === 0) {
-<div class="p-[20px]">
-  Looking for a match.. Please wait...
-  <button class="border-2" (click)="joinRoom()">Join</button>
-</div>
+<div class="p-[20px]">Looking for a match.. Please wait...</div>
 }@else if (status === 1){
 <div class="p-[20px]">
   Connecting to remote host...
@@ -27,7 +24,9 @@
 }@else if(status === 3){
 <div class="p-[20px]">
   Remote user has disconnected! Search for a new match?
-  <button class="border-2">Start a new search</button>
+  <button class="border-2" (click)="startMatchMaking()">
+    Start a new search
+  </button>
 </div>
 }
 

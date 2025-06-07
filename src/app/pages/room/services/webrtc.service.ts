@@ -1,7 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, push, onValue, off, remove, Database } from 'firebase/database';
+import { getDatabase, ref, set, push, onValue, off, remove, Database, get, onDisconnect } from 'firebase/database';
 
 @Injectable({
   providedIn: 'root'
@@ -222,20 +221,15 @@ export class WebrtcService {
     remoteVideoElement: HTMLVideoElement
   ): Promise<void> {
     this.roomId = roomId.trim();
-    if (!this.roomId) throw new Error("Please enter a room ID");
-
+    if (!this.roomId) throw new Error("Please enter a room ID");  
     await this.setupLocalStream(localVideoElement);
 
-    // Check if room exists (someone is already there)
-    const roomRef = ref(this.database, `rooms/${this.roomId}`);
-    
-    const roomSnapshot = await new Promise((resolve) => {
-      onValue(roomRef, (snapshot) => {
-        resolve(snapshot.exists());
-      }, { onlyOnce: true });
-    });
 
-    if (roomSnapshot) {
+    // Check if room exists (someone is already there)
+    const roomRef = ref(this.database, `rooms/${this.roomId}`); 
+    const snapshot = await get(roomRef);
+
+    if (snapshot.exists()) {
       // Room exists - join as callee
       this.isCaller = false;
     } else {
@@ -244,8 +238,12 @@ export class WebrtcService {
       await set(roomRef, { created: true });
     }
 
+    const disconnectRef = ref(this.database, `rooms/${this.roomId}`);
+    onDisconnect(disconnectRef).remove();
+
     this.setupPeerConnection(remoteVideoElement);
     this.listenForSignals();
+
 
     if (this.isCaller) {
       // Caller creates the offer
@@ -256,6 +254,7 @@ export class WebrtcService {
         offer: offer,
       });
     }
+
   }
 
   // Leave the current room
@@ -289,6 +288,11 @@ export class WebrtcService {
       this.signalsRef = null;
     }
 
+    if (this.roomDeleteSub) {
+      this.roomDeleteSub();
+      this.roomDeleteSub = null;
+    }
+
     // Remove room if any party leave
     if (this.roomId) {
       const roomRef = ref(this.database, `rooms/${this.roomId}`);
@@ -302,4 +306,16 @@ export class WebrtcService {
   ngOnDestroy(): void {
     this.cleanUp();
   }
+
+  // // Lets detect when one of the users leave the room
+  // private roomDeleteSub: (() => void) | null = null;
+  // onRoomDeleted(callback: () => void): void {
+  //   const roomRef = ref(this.database, `rooms/${this.roomId}/ `);
+  //   onValue(roomRef, (snapshot) => {
+  //     if (!snapshot.exists()) {
+  //       //callback();
+  //     }
+  //   });
+  //   this.roomDeleteSub = () => off(roomRef);
+  // }
 }

@@ -1,1 +1,36 @@
-<p>home works!</p>
+<div class="p-[50px]">
+  Role:
+  <br />
+  <input
+    type="radio"
+    name="role"
+    id="interviewer"
+    value="interviewer"
+    checked
+    [(ngModel)]="role"
+  />
+  <label for="interviewer" class="ms-2">Interviewer</label>
+  <br />
+  <input
+    [(ngModel)]="role"
+    type="radio"
+    name="role"
+    id="interviewee"
+    value="interviewee"
+  />
+  <label for="interviewee" class="ms-2">Interviewee</label>
+  <br />
+  <br />
+  tags:
+  <input
+    type="text"
+    placeholder="javascript, php, angular"
+    class="border-2 p-2 placeholder-neutral-500"
+    [(ngModel)]="tags"
+  />
+
+  <br />
+  <button (click)="startSession()" class="mt-2 border-2 p-2">
+    Start Interview
+  </button>
+</div>
