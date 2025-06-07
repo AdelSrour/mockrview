@@ -288,10 +288,10 @@ export class WebrtcService {
       this.signalsRef = null;
     }
 
-    if (this.roomDeleteSub) {
-      this.roomDeleteSub();
-      this.roomDeleteSub = null;
-    }
+    // if (this.roomDeleteSub) {
+    //   this.roomDeleteSub();
+    //   this.roomDeleteSub = null;
+    // }
 
     // Remove room if any party leave
     if (this.roomId) {
