@@ -62,9 +62,3 @@ Contributions are welcome! Please open an issue or submit a pull request.
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-## Contact
-
-For questions or suggestions, contact contact@adel.dev.
