@@ -47,8 +47,18 @@ export class WebrtcService {
   async setupLocalStream(localVideoElement: HTMLVideoElement): Promise<void> {
     try {
       this.localStream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: true
+        video: {
+          width: { ideal: 320 },
+          height: { ideal: 240 },
+          frameRate: { max: 25 }
+        },
+        audio: {
+          sampleSize: 16,
+          channelCount: 1,
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true
+        }
       });
       localVideoElement.srcObject = this.localStream;
     } catch (error) {
