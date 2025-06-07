@@ -79,6 +79,8 @@ export class RoomComponent implements OnDestroy, OnInit  {
           roomID,
           this.localVideo.nativeElement,
           this.remoteVideo.nativeElement,
+          () => { this.leaveRoom() },// This gets triggered when remote host leaves
+          
         );
       }, delayBased);
 

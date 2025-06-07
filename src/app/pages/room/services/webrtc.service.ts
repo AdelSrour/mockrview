@@ -218,7 +218,8 @@ export class WebrtcService {
   async joinRoom(
     roomId: string,
     localVideoElement: HTMLVideoElement,
-    remoteVideoElement: HTMLVideoElement
+    remoteVideoElement: HTMLVideoElement,
+    callback: () => void
   ): Promise<void> {
     this.roomId = roomId.trim();
     if (!this.roomId) throw new Error("Please enter a room ID");  
@@ -255,6 +256,8 @@ export class WebrtcService {
       });
     }
 
+    this.onRoomDeleted(this.roomId, callback);
+
   }
 
   // Leave the current room
@@ -288,10 +291,10 @@ export class WebrtcService {
       this.signalsRef = null;
     }
 
-    // if (this.roomDeleteSub) {
-    //   this.roomDeleteSub();
-    //   this.roomDeleteSub = null;
-    // }
+    if (this.roomDeleteSub) {
+      this.roomDeleteSub();
+      this.roomDeleteSub = null;
+    }
 
     // Remove room if any party leave
     if (this.roomId) {
@@ -307,15 +310,15 @@ export class WebrtcService {
     this.cleanUp();
   }
 
-  // // Lets detect when one of the users leave the room
-  // private roomDeleteSub: (() => void) | null = null;
-  // onRoomDeleted(callback: () => void): void {
-  //   const roomRef = ref(this.database, `rooms/${this.roomId}/ `);
-  //   onValue(roomRef, (snapshot) => {
-  //     if (!snapshot.exists()) {
-  //       //callback();
-  //     }
-  //   });
-  //   this.roomDeleteSub = () => off(roomRef);
-  // }
+  // Lets detect when one of the users leave the room
+  private roomDeleteSub: (() => void) | null = null;
+  onRoomDeleted(myRoom:string, callback: () => void): void {
+    const roomRef = ref(this.database, `rooms/${myRoom}`);
+    onValue(roomRef, (snapshot) => {
+      if (!snapshot.exists()) {
+        callback();
+      }
+    });
+    this.roomDeleteSub = () => off(roomRef);
+  }
 }
