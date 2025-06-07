@@ -1,59 +1,68 @@
-# Mockrview
+# MockrView
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
+**MockrView** is a mock interview platform that connects you with random strangers for real-time interview practice — no sign-in or registration required. Simply select your role and interview tags, then get matched instantly for live interview sessions.
 
-## Development server
+---
 
-To start a local development server, run:
+## Features
+
+- **No Sign-In Needed:** Just pick your role and tags, and start practicing right away.
+- **Random Matchmaking:** Connect with random users ready for mock interviews.
+- **Role Selection:** Choose to be the interviewer or the interviewee.
+- **Tag Selection:** Select interview topics or skills to customize your session.
+- **Real-Time Communication:** Powered by WebRTC for seamless video/audio interaction.
+- **Anonymous & Secure:** No personal data stored — practice privately.
+- **Backend Support:** Firebase handles signaling and user state; Node.js manages matchmaking.
+
+---
+
+## How It Works
+
+1. **Select Role & Tags:** Choose your interview role and relevant topics.
+2. **Matchmaking:** Node.js backend pairs you with a suitable random partner.
+3. **WebRTC Session:** Establishes a direct peer-to-peer audio/video connection for your mock interview.
+4. **Interview Practice:** Conduct your real-time session.
+5. **Repeat or Exit:** End session or start a new one with a different partner.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/)
+- Angular CLI (`npm install -g @angular/cli`)
+
+### Setup & Run Locally
 
 ```bash
+git clone https://github.com/AdelSrour/mockrview.git
+cd mockrview
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Technologies Used
 
-## Code scaffolding
+- **Frontend:** Angular
+- **Real-Time Communication:** WebRTC
+- **Backend:** Node.js (matchmaking server)
+- **Signaling & State:** Firebase
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## Contributing
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Contributions are welcome! Please open an issue or submit a pull request.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## License
 
-To build the project run:
+This project is licensed under the MIT License.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Contact
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For questions or suggestions, contact contact@adel.dev.
