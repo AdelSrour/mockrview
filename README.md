@@ -2,7 +2,7 @@
 
 **MockrView** is a mock interview platform that connects you with random strangers for real-time interview practice — no sign-in or registration required. Simply select your role and interview tags, then get matched instantly for live interview sessions.
 
-**Live** https://mockrview.web.app/
+**Live Demo:** https://mockrview.web.app
 
 ---
 
