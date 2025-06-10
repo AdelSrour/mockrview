@@ -6,13 +6,13 @@ import {
   ElementRef,
 } from "@angular/core";
 import { WebrtcService } from "../../shared/services/webrtc.service";
-import { CommonModule } from "@angular/common";
+import { CommonModule, TitleCasePipe } from "@angular/common";
 import { MatchMakingService } from "../../shared/services/match-making.service";
-import { Router } from "@angular/router";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: "app-room",
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, TitleCasePipe],
   templateUrl: "./room.component.html",
   styleUrl: "./room.component.scss",
 })
@@ -50,6 +50,12 @@ export class RoomComponent implements OnDestroy, OnInit {
   hasLocalVideo: boolean = false;
   hasRemoteVideo: boolean = false;
 
+  /**
+   * User search preferences
+   */
+  userRole: string = "";
+  userTags: string[] = [];
+
   //LocalVideo element
   @ViewChild("localVideo") localVideo!: ElementRef<HTMLVideoElement>;
 
@@ -66,8 +72,8 @@ export class RoomComponent implements OnDestroy, OnInit {
     let tags = sessionStorage.getItem("tags") || "[]"; //We get tags from sessionStorage
     let parsedtags = JSON.parse(tags);
 
-    if ((parsedtags.length == 0) || tags == "") {
-      this.route.navigate(['/']);
+    if (parsedtags.length == 0 || tags == "") {
+      this.route.navigate(["/"]);
       return;
     }
 
@@ -80,6 +86,17 @@ export class RoomComponent implements OnDestroy, OnInit {
     // Start match making
     this.status = 0; // Set status to searching
     // Start searching for a match based on these options
+
+    let role = sessionStorage.getItem("role") || ""; //We get user role from sessionStorage
+    let tags = sessionStorage.getItem("tags") || "{}"; //We get tags from sessionStorage
+    let parsedtags = JSON.parse(tags);
+
+    // Store user preferences for display
+    this.userRole = role;
+    this.userTags = Array.isArray(parsedtags)
+      ? parsedtags
+      : Object.values(parsedtags || {});
+
     this.matchMaking
       .joinWaitingPool(role, parsedtags)
       .then((userId) => console.log(`Joined as ${userId}`)) // Here we joined successfully to match making pool
