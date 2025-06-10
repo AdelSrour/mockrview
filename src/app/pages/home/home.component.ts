@@ -24,10 +24,11 @@ export class HomeComponent {
     }
 
     try {
-       await navigator.mediaDevices.getUserMedia({
+      let stream = await navigator.mediaDevices.getUserMedia({
         audio: true,
         video: true,
       });
+      stream.getTracks().forEach(track => track.stop());
     } catch (err) {
       alert("You need to enable camera and mic")
     }
