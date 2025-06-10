@@ -8,6 +8,7 @@ import {
 import { WebrtcService } from "../../shared/services/webrtc.service";
 import { CommonModule } from "@angular/common";
 import { MatchMakingService } from "../../shared/services/match-making.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-room",
@@ -19,7 +20,8 @@ export class RoomComponent implements OnDestroy, OnInit {
   // Use the webRTC service
   constructor(
     private webRtcService: WebrtcService,
-    private matchMaking: MatchMakingService
+    private matchMaking: MatchMakingService,
+    private route: Router
   ) {}
 
   /**
@@ -60,6 +62,15 @@ export class RoomComponent implements OnDestroy, OnInit {
   }
 
   startMatchMaking() {
+    let role = sessionStorage.getItem("role") || ""; //We get user role from sessionStorage
+    let tags = sessionStorage.getItem("tags") || "[]"; //We get tags from sessionStorage
+    let parsedtags = JSON.parse(tags);
+
+    if ((parsedtags.length == 0) || tags == "") {
+      this.route.navigate(['/']);
+      return;
+    }
+
     // Function to be executed once a match is found
     this.matchMaking.initMatchingSystem((sessionId, callerRole) => {
       // We join the room once a match is found using the session id (we have matchedWith which is the userID (random string) maybe we can make use of it)
@@ -69,11 +80,6 @@ export class RoomComponent implements OnDestroy, OnInit {
     // Start match making
     this.status = 0; // Set status to searching
     // Start searching for a match based on these options
-
-    let role = sessionStorage.getItem("role") || ""; //We get user role from sessionStorage
-    let tags = sessionStorage.getItem("tags") || "{}"; //We get tags from sessionStorage
-    let parsedtags = JSON.parse(tags);
-
     this.matchMaking
       .joinWaitingPool(role, parsedtags)
       .then((userId) => console.log(`Joined as ${userId}`)) // Here we joined successfully to match making pool
