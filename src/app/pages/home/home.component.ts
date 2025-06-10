@@ -17,9 +17,19 @@ export class HomeComponent {
   role!: string;
   tags!: string;
 
-  startSession() {
+  async startSession() {
     if (!this.role || !this.tags) {
-     alert("Please select role and tags")
+      alert("Please select role and tags")
+      return;
+    }
+
+    try {
+       await navigator.mediaDevices.getUserMedia({
+        audio: true,
+        video: true,
+      });
+    } catch (err) {
+      alert("You need to enable camera and mic")
     }
 
     let preparedTags = this.tags.split(",").map(tag => tag.trim());

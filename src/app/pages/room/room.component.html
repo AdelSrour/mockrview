@@ -104,9 +104,66 @@
   </div>
   }
 
+  <!-- Status 3: Disconnected -->
+  @else if (status === 3) {
+  <div class="flex items-center justify-center min-h-screen p-6">
+    <div class="max-w-md mx-auto text-center">
+      <div
+        class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl dark:shadow-gray-900/50 border border-gray-200/50 dark:border-gray-700/50 p-8 animate-scale-in"
+      >
+        <!-- Disconnected Icon -->
+        <div class="w-24 h-24 mx-auto mb-6 relative">
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 dark:from-red-400 dark:to-pink-400 rounded-full animate-pulse opacity-75"
+          ></div>
+          <div
+            class="relative w-24 h-24 bg-gradient-to-r from-red-600 to-pink-600 dark:from-red-500 dark:to-pink-500 rounded-full flex items-center justify-center"
+          >
+            <i class="fas fa-phone-slash text-white text-2xl"></i>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+          Interview Ended
+        </h2>
+
+        <p class="text-gray-600 dark:text-gray-300 mb-8">
+          The remote user has disconnected. Would you like to search for another
+          interview partner?
+        </p>
+
+        <button
+          (click)="startMatchMaking()"
+          class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+        >
+          <i class="fas fa-search mr-2"></i>
+          Start New Search
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- Error Messages -->
+  @if(errorMessages) {
+  <div class="fixed bottom-6 right-6 z-50 animate-slide-up">
+    <div
+      class="bg-red-500 dark:bg-red-600 text-white p-4 rounded-xl shadow-2xl border border-red-400 dark:border-red-500 max-w-sm"
+    >
+      <div class="flex items-start space-x-3">
+        <i class="fas fa-exclamation-triangle text-xl flex-shrink-0 mt-0.5"></i>
+        <div>
+          <h4 class="font-semibold mb-1">Error</h4>
+          <p class="text-sm opacity-90">{{ errorMessages }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+
   <!-- Status 2: Active Video Call -->
-  @else if (status === 2) {
   <div
+    [ngClass]="{ hidden: status != 2 }"
     class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden transition-all duration-500"
   >
     <!-- Background Pattern -->
@@ -240,62 +297,4 @@
       </div>
     </div>
   </div>
-  }
-
-  <!-- Status 3: Disconnected -->
-  @else if (status === 3) {
-  <div class="flex items-center justify-center min-h-screen p-6">
-    <div class="max-w-md mx-auto text-center">
-      <div
-        class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl dark:shadow-gray-900/50 border border-gray-200/50 dark:border-gray-700/50 p-8 animate-scale-in"
-      >
-        <!-- Disconnected Icon -->
-        <div class="w-24 h-24 mx-auto mb-6 relative">
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 dark:from-red-400 dark:to-pink-400 rounded-full animate-pulse opacity-75"
-          ></div>
-          <div
-            class="relative w-24 h-24 bg-gradient-to-r from-red-600 to-pink-600 dark:from-red-500 dark:to-pink-500 rounded-full flex items-center justify-center"
-          >
-            <i class="fas fa-phone-slash text-white text-2xl"></i>
-          </div>
-        </div>
-
-        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
-          Interview Ended
-        </h2>
-
-        <p class="text-gray-600 dark:text-gray-300 mb-8">
-          The remote user has disconnected. Would you like to search for another
-          interview partner?
-        </p>
-
-        <button
-          (click)="startMatchMaking()"
-          class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
-        >
-          <i class="fas fa-search mr-2"></i>
-          Start New Search
-        </button>
-      </div>
-    </div>
-  </div>
-  }
-
-  <!-- Error Messages -->
-  @if(errorMessages) {
-  <div class="fixed bottom-6 right-6 z-50 animate-slide-up">
-    <div
-      class="bg-red-500 dark:bg-red-600 text-white p-4 rounded-xl shadow-2xl border border-red-400 dark:border-red-500 max-w-sm"
-    >
-      <div class="flex items-start space-x-3">
-        <i class="fas fa-exclamation-triangle text-xl flex-shrink-0 mt-0.5"></i>
-        <div>
-          <h4 class="font-semibold mb-1">Error</h4>
-          <p class="text-sm opacity-90">{{ errorMessages }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  }
 </div>
