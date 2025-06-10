@@ -8,11 +8,11 @@ import {
 import { WebrtcService } from "../../shared/services/webrtc.service";
 import { CommonModule, TitleCasePipe } from "@angular/common";
 import { MatchMakingService } from "../../shared/services/match-making.service";
-import { RouterLink } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 
 @Component({
   selector: "app-room",
-  imports: [CommonModule, RouterLink, TitleCasePipe],
+  imports: [CommonModule, RouterModule],
   templateUrl: "./room.component.html",
   styleUrl: "./room.component.scss",
 })
@@ -87,9 +87,9 @@ export class RoomComponent implements OnDestroy, OnInit {
     this.status = 0; // Set status to searching
     // Start searching for a match based on these options
 
-    let role = sessionStorage.getItem("role") || ""; //We get user role from sessionStorage
-    let tags = sessionStorage.getItem("tags") || "{}"; //We get tags from sessionStorage
-    let parsedtags = JSON.parse(tags);
+    // Update tags format for display purposes
+    tags = sessionStorage.getItem("tags") || "{}"; //We get tags from sessionStorage for display
+    parsedtags = JSON.parse(tags);
 
     // Store user preferences for display
     this.userRole = role;
@@ -117,7 +117,7 @@ export class RoomComponent implements OnDestroy, OnInit {
       let delayBased = callerRole == "interviewee" ? 1000 : 0;
 
       // Start video (will ask for permission for camera access)
-      await setTimeout(async () => {
+      setTimeout(async () => {
         await this.webRtcService.joinRoom(
           roomID,
           this.localVideo.nativeElement,
