@@ -30,10 +30,11 @@ export class HomeComponent {
       });
       stream.getTracks().forEach(track => track.stop());
     } catch (err) {
-      alert("You need to enable camera and mic")
+      alert("You need to enable camera and microphone!");
+      return;
     }
 
-    let preparedTags = this.tags.split(",").map(tag => tag.trim());
+    let preparedTags = this.tags.split(",").map(tag => tag.trim().toLowerCase());
     let JSONTags = JSON.stringify(preparedTags);
     
     sessionStorage.setItem("role", this.role);
