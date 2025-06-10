@@ -1,33 +1,45 @@
 <!-- Hero Section -->
-<div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 transition-all duration-500 animate-gradient">
-  
+<div
+  class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 transition-all duration-500 animate-gradient"
+>
   <!-- Main Content Container -->
   <div class="container mx-auto px-6 py-16">
-    
     <!-- Hero Text Section -->
     <div class="text-center mb-16 animate-fade-in">
-      <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-300 bg-clip-text text-transparent mb-6 leading-tight animate-gradient-text">
+      <h1
+        class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-300 bg-clip-text text-transparent mb-6 leading-tight animate-gradient-text"
+      >
         Welcome to Mockrview
       </h1>
-      <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto leading-relaxed animate-slide-up">
+      <p
+        class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-3xl mx-auto leading-relaxed animate-slide-up"
+      >
         Practice your interview skills with real-time video connections
       </p>
-      <p class="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto animate-slide-up-delay">
-        Connect with other developers, practice coding interviews, and improve your technical communication skills
+      <p
+        class="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto animate-slide-up-delay"
+      >
+        Connect with other developers, practice coding interviews, and improve
+        your technical communication skills
       </p>
     </div>
 
     <!-- Main Card -->
     <div class="max-w-2xl mx-auto animate-scale-in">
-      <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl dark:shadow-gray-900/50 border border-gray-200/50 dark:border-gray-700/50 p-8 md:p-12 transition-all duration-300 hover:shadow-3xl floating-card">
-        
+      <div
+        class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl dark:shadow-gray-900/50 border border-gray-200/50 dark:border-gray-700/50 p-8 md:p-12 transition-all duration-300 hover:shadow-3xl floating-card"
+      >
         <!-- Role Selection Section -->
         <div class="mb-10">
-          <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center">
-            <i class="fas fa-user-tie text-blue-500 dark:text-blue-400 mr-3 animate-bounce-subtle"></i>
+          <h2
+            class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center"
+          >
+            <i
+              class="fas fa-user-tie text-blue-500 dark:text-blue-400 mr-3 animate-bounce-subtle"
+            ></i>
             Choose Your Role
           </h2>
-          
+
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Interviewer Option -->
             <label class="relative cursor-pointer group">
@@ -38,31 +50,50 @@
                 [(ngModel)]="role"
                 class="sr-only"
               />
-              <div class="role-card p-6 rounded-xl border-2 transition-all duration-300 group-hover:scale-105"
-                   [class]="role === 'interviewer' 
-                     ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 dark:border-blue-400 shadow-lg glow-blue' 
-                     : 'border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/50 hover:border-gray-300 dark:hover:border-gray-500'">
-                
+              <div
+                class="role-card p-6 rounded-xl border-2 transition-all duration-300 group-hover:scale-105"
+                [class]="
+                  role === 'interviewer'
+                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 dark:border-blue-400 shadow-lg glow-blue'
+                    : 'border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/50 hover:border-gray-300 dark:hover:border-gray-500'
+                "
+              >
                 <div class="text-center">
-                  <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center animate-pulse-icon"
-                       [class]="role === 'interviewer' 
-                         ? 'bg-blue-100 dark:bg-blue-800' 
-                         : 'bg-gray-100 dark:bg-gray-600'">
-                    <i class="fas fa-clipboard-list text-2xl"
-                       [class]="role === 'interviewer' 
-                         ? 'text-blue-600 dark:text-blue-300' 
-                         : 'text-gray-500 dark:text-gray-400'"></i>
+                  <div
+                    class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center animate-pulse-icon"
+                    [class]="
+                      role === 'interviewer'
+                        ? 'bg-blue-100 dark:bg-blue-800'
+                        : 'bg-gray-100 dark:bg-gray-600'
+                    "
+                  >
+                    <i
+                      class="fas fa-clipboard-list text-2xl"
+                      [class]="
+                        role === 'interviewer'
+                          ? 'text-blue-600 dark:text-blue-300'
+                          : 'text-gray-500 dark:text-gray-400'
+                      "
+                    ></i>
                   </div>
-                  <h3 class="font-semibold text-lg mb-2"
-                      [class]="role === 'interviewer' 
-                        ? 'text-blue-700 dark:text-blue-300' 
-                        : 'text-gray-700 dark:text-gray-300'">
+                  <h3
+                    class="font-semibold text-lg mb-2"
+                    [class]="
+                      role === 'interviewer'
+                        ? 'text-blue-700 dark:text-blue-300'
+                        : 'text-gray-700 dark:text-gray-300'
+                    "
+                  >
                     Interviewer
                   </h3>
-                  <p class="text-sm"
-                     [class]="role === 'interviewer' 
-                       ? 'text-blue-600 dark:text-blue-400' 
-                       : 'text-gray-500 dark:text-gray-400'">
+                  <p
+                    class="text-sm"
+                    [class]="
+                      role === 'interviewer'
+                        ? 'text-blue-600 dark:text-blue-400'
+                        : 'text-gray-500 dark:text-gray-400'
+                    "
+                  >
                     Conduct technical interviews
                   </p>
                 </div>
@@ -78,31 +109,50 @@
                 [(ngModel)]="role"
                 class="sr-only"
               />
-              <div class="role-card p-6 rounded-xl border-2 transition-all duration-300 group-hover:scale-105"
-                   [class]="role === 'interviewee' 
-                     ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/30 dark:border-purple-400 shadow-lg glow-purple' 
-                     : 'border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/50 hover:border-gray-300 dark:hover:border-gray-500'">
-                
+              <div
+                class="role-card p-6 rounded-xl border-2 transition-all duration-300 group-hover:scale-105"
+                [class]="
+                  role === 'interviewee'
+                    ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/30 dark:border-purple-400 shadow-lg glow-purple'
+                    : 'border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/50 hover:border-gray-300 dark:hover:border-gray-500'
+                "
+              >
                 <div class="text-center">
-                  <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center animate-pulse-icon"
-                       [class]="role === 'interviewee' 
-                         ? 'bg-purple-100 dark:bg-purple-800' 
-                         : 'bg-gray-100 dark:bg-gray-600'">
-                    <i class="fas fa-user-graduate text-2xl"
-                       [class]="role === 'interviewee' 
-                         ? 'text-purple-600 dark:text-purple-300' 
-                         : 'text-gray-500 dark:text-gray-400'"></i>
+                  <div
+                    class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center animate-pulse-icon"
+                    [class]="
+                      role === 'interviewee'
+                        ? 'bg-purple-100 dark:bg-purple-800'
+                        : 'bg-gray-100 dark:bg-gray-600'
+                    "
+                  >
+                    <i
+                      class="fas fa-user-graduate text-2xl"
+                      [class]="
+                        role === 'interviewee'
+                          ? 'text-purple-600 dark:text-purple-300'
+                          : 'text-gray-500 dark:text-gray-400'
+                      "
+                    ></i>
                   </div>
-                  <h3 class="font-semibold text-lg mb-2"
-                      [class]="role === 'interviewee' 
-                        ? 'text-purple-700 dark:text-purple-300' 
-                        : 'text-gray-700 dark:text-gray-300'">
+                  <h3
+                    class="font-semibold text-lg mb-2"
+                    [class]="
+                      role === 'interviewee'
+                        ? 'text-purple-700 dark:text-purple-300'
+                        : 'text-gray-700 dark:text-gray-300'
+                    "
+                  >
                     Interviewee
                   </h3>
-                  <p class="text-sm"
-                     [class]="role === 'interviewee' 
-                       ? 'text-purple-600 dark:text-purple-400' 
-                       : 'text-gray-500 dark:text-gray-400'">
+                  <p
+                    class="text-sm"
+                    [class]="
+                      role === 'interviewee'
+                        ? 'text-purple-600 dark:text-purple-400'
+                        : 'text-gray-500 dark:text-gray-400'
+                    "
+                  >
                     Practice your interview skills
                   </p>
                 </div>
@@ -113,11 +163,15 @@
 
         <!-- Tags Section -->
         <div class="mb-10">
-          <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center">
-            <i class="fas fa-tags text-green-500 dark:text-green-400 mr-3 animate-wiggle"></i>
+          <h2
+            class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center"
+          >
+            <i
+              class="fas fa-tags text-green-500 dark:text-green-400 mr-3 animate-wiggle"
+            ></i>
             Skills & Technologies
           </h2>
-          
+
           <div class="relative">
             <input
               type="text"
@@ -126,11 +180,15 @@
               [(ngModel)]="tags"
             />
             <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
-              <i class="fas fa-keyboard text-gray-400 dark:text-gray-500 animate-pulse"></i>
+              <i
+                class="fas fa-keyboard text-gray-400 dark:text-gray-500 animate-pulse"
+              ></i>
             </div>
           </div>
-          
-          <p class="text-sm text-gray-500 dark:text-gray-400 mt-3 flex items-center">
+
+          <p
+            class="text-sm text-gray-500 dark:text-gray-400 mt-3 flex items-center"
+          >
             <i class="fas fa-info-circle mr-2 animate-bounce-subtle"></i>
             Separate multiple skills with commas
           </p>
@@ -143,50 +201,80 @@
             class="group relative px-12 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-400 dark:hover:to-purple-400 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/30 dark:focus:ring-blue-400/30 animated-button"
           >
             <span class="flex items-center">
-              <i class="fas fa-video mr-3 group-hover:animate-pulse animate-spin-slow"></i>
+              <i
+                class="fas fa-video mr-3 group-hover:animate-pulse animate-spin-slow"
+              ></i>
               Start Interview Session
-              <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300 animate-bounce-arrow"></i>
+              <i
+                class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300 animate-bounce-arrow"
+              ></i>
             </span>
           </button>
-          
-          <p class="text-sm text-gray-500 dark:text-gray-400 mt-4 animate-fade-in-delay">
-            You'll be matched with someone based on your selected role and skills
+
+          <p
+            class="text-sm text-gray-500 dark:text-gray-400 mt-4 animate-fade-in-delay"
+          >
+            You'll be matched with someone based on your selected role and
+            skills
           </p>
         </div>
-
       </div>
     </div>
 
     <!-- Features Section -->
     <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      
       <!-- Feature 1 -->
-      <div class="text-center p-6 bg-white/50 dark:bg-gray-800/50 rounded-2xl backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 group floating-card animate-float">
-        <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-pulse-icon">
+      <div
+        class="text-center p-6 bg-white/50 dark:bg-gray-800/50 rounded-2xl backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 group floating-card animate-float"
+      >
+        <div
+          class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-pulse-icon"
+        >
           <i class="fas fa-users text-white text-xl"></i>
         </div>
-        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3">Real-time Matching</h3>
-        <p class="text-gray-600 dark:text-gray-400">Get matched instantly with developers who share your interests and skill level</p>
+        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3">
+          Real-time Matching
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400">
+          Get matched instantly with developers who share your interests and
+          skill level
+        </p>
       </div>
 
       <!-- Feature 2 -->
-      <div class="text-center p-6 bg-white/50 dark:bg-gray-800/50 rounded-2xl backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 group floating-card animate-float-delay-1">
-        <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-purple-600 dark:from-purple-400 dark:to-purple-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-pulse-icon">
+      <div
+        class="text-center p-6 bg-white/50 dark:bg-gray-800/50 rounded-2xl backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 group floating-card animate-float-delay-1"
+      >
+        <div
+          class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-purple-600 dark:from-purple-400 dark:to-purple-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-pulse-icon"
+        >
           <i class="fas fa-video text-white text-xl"></i>
         </div>
-        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3">HD Video Chat</h3>
-        <p class="text-gray-600 dark:text-gray-400">Crystal clear video and audio quality for the best interview experience</p>
+        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3">
+          HD Video Chat
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400">
+          Crystal clear video and audio quality for the best interview
+          experience
+        </p>
       </div>
 
       <!-- Feature 3 -->
-      <div class="text-center p-6 bg-white/50 dark:bg-gray-800/50 rounded-2xl backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 group floating-card animate-float-delay-2">
-        <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-green-500 to-green-600 dark:from-green-400 dark:to-green-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-pulse-icon">
+      <div
+        class="text-center p-6 bg-white/50 dark:bg-gray-800/50 rounded-2xl backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:shadow-lg transition-all duration-300 group floating-card animate-float-delay-2"
+      >
+        <div
+          class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-green-500 to-green-600 dark:from-green-400 dark:to-green-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 animate-pulse-icon"
+        >
           <i class="fas fa-chart-line text-white text-xl"></i>
         </div>
-        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3">Skill Development</h3>
-        <p class="text-gray-600 dark:text-gray-400">Improve your technical communication and interview confidence</p>
+        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-3">
+          Skill Development
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400">
+          Improve your technical communication and interview confidence
+        </p>
       </div>
-
     </div>
   </div>
 </div>

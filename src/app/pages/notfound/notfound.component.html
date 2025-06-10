@@ -1,1 +1,124 @@
-<p>notfound works!</p>
+<!-- 404 Not Found Page -->
+<div
+  class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 transition-all duration-500 animate-gradient flex items-center justify-center px-6"
+>
+  <!-- Main Container -->
+  <div class="max-w-4xl mx-auto text-center">
+    <!-- 404 Number with Animation -->
+    <div class="relative mb-8 animate-bounce-in">
+      <!-- Background 404 -->
+      <div
+        class="text-[200px] md:text-[300px] lg:text-[400px] font-black text-gray-200 dark:text-gray-800 leading-none select-none animate-float-large"
+      >
+        404
+      </div>
+
+      <!-- Overlay animated elements -->
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="relative">
+          <!-- Floating icons around 404 -->
+          <i
+            class="fas fa-question-circle absolute text-blue-500 dark:text-blue-400 text-4xl animate-orbit-1"
+            style="top: -60px; left: -80px"
+          ></i>
+          <i
+            class="fas fa-search absolute text-purple-500 dark:text-purple-400 text-3xl animate-orbit-2"
+            style="top: -40px; right: -100px"
+          ></i>
+          <i
+            class="fas fa-exclamation-triangle absolute text-orange-500 dark:text-orange-400 text-3xl animate-orbit-3"
+            style="bottom: -50px; left: -60px"
+          ></i>
+          <i
+            class="fas fa-compass absolute text-green-500 dark:text-green-400 text-4xl animate-orbit-4"
+            style="bottom: -70px; right: -90px"
+          ></i>
+
+          <!-- Central animated element -->
+          <div
+            class="w-32 h-32 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 dark:from-blue-400 dark:to-purple-400 flex items-center justify-center animate-pulse-glow"
+          >
+            <i
+              class="fas fa-map-marked-alt text-white text-4xl animate-spin-slow"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div class="mb-12 animate-slide-up">
+      <h1
+        class="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-300 bg-clip-text text-transparent mb-6 animate-gradient-text"
+      >
+        Oops! Page Not Found
+      </h1>
+
+      <p
+        class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 max-w-2xl mx-auto animate-fade-in-delay"
+      >
+        The page you're looking for seems to have vanished into the digital void
+      </p>
+
+      <p
+        class="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto animate-fade-in-delay-2"
+      >
+        Don't worry, even the best developers get lost sometimes. Let's get you
+        back on track!
+      </p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div
+      class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-scale-in"
+    >
+      <!-- Go Home Button -->
+      <button
+        (click)="goHome()"
+        class="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-400 dark:hover:to-purple-400 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/30 dark:focus:ring-blue-400/30 animated-button-primary"
+      >
+        <span class="flex items-center">
+          <i class="fas fa-home mr-3 group-hover:animate-bounce"></i>
+          Take Me Home
+          <i
+            class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"
+          ></i>
+        </span>
+      </button>
+
+      <!-- Go Back Button -->
+      <button
+        (click)="goBack()"
+        class="group relative px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-gray-500/20 dark:focus:ring-gray-400/20 animated-button-secondary"
+      >
+        <span class="flex items-center">
+          <i
+            class="fas fa-arrow-left mr-3 group-hover:-translate-x-1 transition-transform duration-300"
+          ></i>
+          Go Back
+        </span>
+      </button>
+    </div>
+
+    <!-- Helpful Links -->
+
+    <!-- Decorative Elements -->
+    <div class="absolute top-10 left-10 animate-float-slow">
+      <div
+        class="w-20 h-20 rounded-full bg-blue-200 dark:bg-blue-800 opacity-20"
+      ></div>
+    </div>
+
+    <div class="absolute bottom-10 right-10 animate-float-slow-reverse">
+      <div
+        class="w-32 h-32 rounded-full bg-purple-200 dark:bg-purple-800 opacity-20"
+      ></div>
+    </div>
+
+    <div class="absolute top-1/3 right-20 animate-float-medium">
+      <div
+        class="w-16 h-16 rounded-full bg-green-200 dark:bg-green-800 opacity-20"
+      ></div>
+    </div>
+  </div>
+</div>

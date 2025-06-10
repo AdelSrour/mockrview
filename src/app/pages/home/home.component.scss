@@ -31,7 +31,8 @@
 }
 
 @keyframes gradient-text-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -113,7 +114,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -127,7 +129,8 @@
 }
 
 @keyframes pulseIcon {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -141,7 +144,8 @@
 }
 
 @keyframes bounceSubtle {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -155,7 +159,8 @@
 }
 
 @keyframes wiggle {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(0deg);
   }
   25% {
@@ -172,7 +177,8 @@
 }
 
 @keyframes bounceArrow {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
   50% {
@@ -205,7 +211,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
   }
   50% {
@@ -228,13 +235,15 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   /* Reduce animation intensity on mobile */
   .floating-card {
     animation: float 8s ease-in-out infinite;
   }
-  
-  .animate-float, .animate-float-delay-1, .animate-float-delay-2 {
+
+  .animate-float,
+  .animate-float-delay-1,
+  .animate-float-delay-2 {
     animation: float 8s ease-in-out infinite;
   }
 }
