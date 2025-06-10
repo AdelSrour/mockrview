@@ -9,7 +9,7 @@
 /* Gradient background animation */
 .animate-gradient {
   background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
+  animation: gradient-shift 5s ease infinite;
 }
 
 @keyframes gradient-shift {

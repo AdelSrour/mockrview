@@ -1,36 +1,301 @@
-<!-- We cannot put these in if because when we call joinroom we select these video elements -->
-<div [ngClass]="{ hidden: status !== 2 }">
-  <div class="p-[20px]">
-    <h3>You</h3>
-    <video #localVideo [muted]="true" [autoplay]="true"></video>
+<!-- Room Interview Interface -->
+<div
+  class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 transition-all duration-500"
+>
+  <!-- Status 0: Searching for Match -->
+  @if(status === 0) {
+  <div class="flex items-center justify-center min-h-screen p-6">
+    <div class="max-w-md mx-auto text-center">
+      <div
+        class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl dark:shadow-gray-900/50 border border-gray-200/50 dark:border-gray-700/50 p-8 animate-scale-in"
+      >
+        <!-- Animated Search Icon -->
+        <div class="w-24 h-24 mx-auto mb-6 relative">
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 dark:from-blue-400 dark:to-purple-400 rounded-full animate-ping opacity-75"
+          ></div>
+          <div
+            class="relative w-24 h-24 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 rounded-full flex items-center justify-center animate-pulse"
+          >
+            <i class="fas fa-search text-white text-2xl animate-bounce"></i>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+          Finding Your Match
+        </h2>
+
+        <p class="text-gray-600 dark:text-gray-300 mb-6">
+          We're searching for the perfect interview partner based on your skills
+          and preferences...
+        </p>
+
+        <!-- Loading Bar -->
+        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-4">
+          <div
+            class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full animate-loading-bar"
+          ></div>
+        </div>
+
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          This usually takes 10-30 seconds
+        </p>
+      </div>
+    </div>
   </div>
+  }
 
-  <div class="p-[20px]">
-    <h3>Remote</h3>
-    <video #remoteVideo [autoplay]="true"></video>
+  <!-- Status 1: Connecting/Permission Request -->
+  @else if (status === 1) {
+  <div class="flex items-center justify-center min-h-screen p-6">
+    <div class="max-w-lg mx-auto text-center">
+      <div
+        class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl dark:shadow-gray-900/50 border border-gray-200/50 dark:border-gray-700/50 p-8 animate-fade-in"
+      >
+        <!-- Connection Icon -->
+        <div class="w-24 h-24 mx-auto mb-6 relative">
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 dark:from-green-400 dark:to-emerald-400 rounded-full animate-pulse opacity-75"
+          ></div>
+          <div
+            class="relative w-24 h-24 bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-500 dark:to-emerald-500 rounded-full flex items-center justify-center"
+          >
+            <i class="fas fa-video text-white text-2xl animate-pulse"></i>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+          Match Found!
+        </h2>
+
+        <p class="text-gray-600 dark:text-gray-300 mb-6">
+          Connecting to your interview partner and requesting camera/microphone
+          permissions...
+        </p>
+
+        <!-- Permission Icons -->
+        <div class="flex justify-center space-x-6 mb-6">
+          <div class="flex flex-col items-center">
+            <div
+              class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-full flex items-center justify-center mb-2 animate-bounce"
+            >
+              <i class="fas fa-microphone text-blue-600 dark:text-blue-400"></i>
+            </div>
+            <span class="text-xs text-gray-500 dark:text-gray-400"
+              >Microphone</span
+            >
+          </div>
+          <div class="flex flex-col items-center">
+            <div
+              class="w-12 h-12 bg-purple-100 dark:bg-purple-900/50 rounded-full flex items-center justify-center mb-2 animate-bounce"
+              style="animation-delay: 0.2s"
+            >
+              <i class="fas fa-camera text-purple-600 dark:text-purple-400"></i>
+            </div>
+            <span class="text-xs text-gray-500 dark:text-gray-400">Camera</span>
+          </div>
+        </div>
+
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          Please allow access to start your interview
+        </p>
+      </div>
+    </div>
   </div>
-</div>
+  }
 
-<!-- Show elements based on status -->
-@if(status === 0) {
-<div class="p-[20px]">Looking for a match.. Please wait...</div>
-}@else if (status === 1){
-<div class="p-[20px]">
-  Connecting to remote host...
-  <br />Please wait....
-</div>
-}@else if (status === 2){
-<button class="border-2" (click)="leaveRoom()">Leave Meeting</button>
-}@else if(status === 3){
-<div class="p-[20px]">
-  Remote user has disconnected! Search for a new match?
-  <button class="border-2" (click)="startMatchMaking()">
-    Start a new search
-  </button>
-</div>
-}
+  <!-- Status 2: Active Video Call -->
+  @else if (status === 2) {
+  <div
+    class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden transition-all duration-500"
+  >
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"
+      ></div>
+    </div>
 
-<!-- Display error messages to user for example camera permission is denied -->
-@if(errorMessages){
-<div class="text-red-700">{{ errorMessages }}</div>
-}
+    <!-- Main Video Container -->
+    <div class="relative z-10 flex flex-col h-screen">
+      <!-- Header -->
+      <div
+        class="flex justify-between items-center p-6 bg-white/20 dark:bg-black/20 backdrop-blur-sm border-b border-gray-200/20 dark:border-white/10 transition-all duration-300"
+      >
+        <div class="flex items-center space-x-4">
+          <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+          <span class="text-gray-800 dark:text-white font-medium"
+            >Interview in Progress</span
+          >
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <!-- Timer -->
+          <div
+            class="flex items-center space-x-2 bg-gray-200/30 dark:bg-black/30 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-300/20 dark:border-white/10"
+          >
+            <i
+              class="fas fa-clock text-gray-600 dark:text-white/70 text-sm"
+            ></i>
+            <span
+              class="text-gray-800 dark:text-white font-mono text-sm"
+              id="timer"
+              >00:00:00</span
+            >
+          </div>
+
+          <!-- Leave Button -->
+          <button
+            (click)="leaveRoom()"
+            class="bg-red-500 hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg hover:shadow-red-500/25"
+          >
+            <i class="fas fa-phone-slash mr-2"></i>
+            Leave
+          </button>
+        </div>
+      </div>
+
+      <!-- Video Grid -->
+      <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
+        <!-- Remote Video (Main) -->
+        <div
+          class="relative bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700/50 group transition-all duration-300"
+        >
+          <div class="absolute top-4 left-4 z-10">
+            <div
+              class="bg-white/90 dark:bg-black/50 backdrop-blur-sm rounded-lg px-3 py-1 border border-gray-200/50 dark:border-white/10"
+            >
+              <span class="text-gray-800 dark:text-white text-sm font-medium"
+                >Interviewer</span
+              >
+            </div>
+          </div>
+
+          <video
+            #remoteVideo
+            [autoplay]="true"
+            class="w-full h-full object-cover"
+          ></video>
+
+          <!-- Overlay for no video -->
+          <div
+            class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 transition-all duration-300"
+            [ngClass]="{ hidden: hasRemoteVideo }"
+          >
+            <div class="text-center">
+              <div
+                class="w-24 h-24 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors duration-300"
+              >
+                <i
+                  class="fas fa-user text-gray-500 dark:text-gray-400 text-3xl"
+                ></i>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 text-lg font-medium">
+                Waiting for video...
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Local Video -->
+        <div
+          class="relative bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700/50 group transition-all duration-300"
+        >
+          <div class="absolute top-4 left-4 z-10">
+            <div
+              class="bg-white/90 dark:bg-black/50 backdrop-blur-sm rounded-lg px-3 py-1 border border-gray-200/50 dark:border-white/10"
+            >
+              <span class="text-gray-800 dark:text-white text-sm font-medium"
+                >You</span
+              >
+            </div>
+          </div>
+
+          <video
+            #localVideo
+            [muted]="true"
+            [autoplay]="true"
+            class="w-full h-full object-cover local-video"
+          ></video>
+
+          <!-- Overlay for no video -->
+          <div
+            class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 transition-all duration-300"
+            [ngClass]="{ hidden: hasLocalVideo }"
+          >
+            <div class="text-center">
+              <div
+                class="w-24 h-24 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors duration-300"
+              >
+                <i
+                  class="fas fa-user text-gray-500 dark:text-gray-400 text-3xl"
+                ></i>
+              </div>
+              <p class="text-gray-600 dark:text-gray-300 text-lg font-medium">
+                Camera disabled
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- Status 3: Disconnected -->
+  @else if (status === 3) {
+  <div class="flex items-center justify-center min-h-screen p-6">
+    <div class="max-w-md mx-auto text-center">
+      <div
+        class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-2xl dark:shadow-gray-900/50 border border-gray-200/50 dark:border-gray-700/50 p-8 animate-scale-in"
+      >
+        <!-- Disconnected Icon -->
+        <div class="w-24 h-24 mx-auto mb-6 relative">
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 dark:from-red-400 dark:to-pink-400 rounded-full animate-pulse opacity-75"
+          ></div>
+          <div
+            class="relative w-24 h-24 bg-gradient-to-r from-red-600 to-pink-600 dark:from-red-500 dark:to-pink-500 rounded-full flex items-center justify-center"
+          >
+            <i class="fas fa-phone-slash text-white text-2xl"></i>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+          Interview Ended
+        </h2>
+
+        <p class="text-gray-600 dark:text-gray-300 mb-8">
+          The remote user has disconnected. Would you like to search for another
+          interview partner?
+        </p>
+
+        <button
+          (click)="startMatchMaking()"
+          class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 dark:from-blue-500 dark:to-purple-500 dark:hover:from-blue-600 dark:hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+        >
+          <i class="fas fa-search mr-2"></i>
+          Start New Search
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+
+  <!-- Error Messages -->
+  @if(errorMessages) {
+  <div class="fixed bottom-6 right-6 z-50 animate-slide-up">
+    <div
+      class="bg-red-500 dark:bg-red-600 text-white p-4 rounded-xl shadow-2xl border border-red-400 dark:border-red-500 max-w-sm"
+    >
+      <div class="flex items-start space-x-3">
+        <i class="fas fa-exclamation-triangle text-xl flex-shrink-0 mt-0.5"></i>
+        <div>
+          <h4 class="font-semibold mb-1">Error</h4>
+          <p class="text-sm opacity-90">{{ errorMessages }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>
