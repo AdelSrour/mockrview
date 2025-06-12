@@ -25,7 +25,7 @@
         >
           <!-- Toggle Circle -->
           <div
-            class="inline-block w-6 h-6 bg-white dark:bg-gray-100 rounded-full shadow-md dark:shadow-gray-700/50 transform transition-all duration-300 ease-in-out border border-gray-100 dark:border-gray-300"
+            class="flex justify-center align-middle w-6 h-6 bg-white dark:bg-gray-100 rounded-full shadow-md dark:shadow-gray-700/50 transform transition-all duration-300 ease-in-out border border-gray-100 dark:border-gray-300"
             [ngClass]="{
               'translate-x-7': isDarkMode,
               'translate-x-0': !isDarkMode
@@ -33,7 +33,7 @@
           >
             <!-- Sun Icon (Light Mode) -->
             <i
-              class="fas fa-sun absolute inset-0 w-6 h-6 text-yellow-500 dark:text-yellow-400 text-sm flex items-center justify-center transition-all duration-300"
+              class="fas fa-sun translate-y-[18%] absolute inset-0 w-6 h-6 text-yellow-500 dark:text-yellow-400 text-sm flex items-center justify-center transition-all duration-300"
               [ngClass]="{
                 'opacity-100 rotate-0 scale-100': !isDarkMode,
                 'opacity-0 rotate-180 scale-75': isDarkMode
@@ -42,7 +42,7 @@
 
             <!-- Moon Icon (Dark Mode) -->
             <i
-              class="fas fa-moon absolute inset-0 w-6 h-6 text-indigo-600 dark:text-indigo-400 text-sm flex items-center justify-center transition-all duration-300"
+              class="fas fa-moon translate-y-[18%] absolute inset-0 w-6 h-6 text-indigo-600 dark:text-indigo-400 text-sm flex items-center justify-center transition-all duration-300"
               [ngClass]="{
                 'opacity-100 rotate-0 scale-100': isDarkMode,
                 'opacity-0 -rotate-180 scale-75': !isDarkMode
