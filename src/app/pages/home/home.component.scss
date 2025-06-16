@@ -247,3 +247,69 @@
     animation: float 8s ease-in-out infinite;
   }
 }
+
+/* Modal specific styles */
+.modal-overlay {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Modal entrance animation */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Enhanced modal animations */
+.animate-modal-in {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Modal button hover effects */
+.modal-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.modal-button:hover:before {
+  left: 100%;
+}
+
+/* Modal icon animation enhancement */
+.modal-icon {
+  animation: modalIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes modalIconPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+}
